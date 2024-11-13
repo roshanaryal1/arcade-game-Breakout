@@ -10,7 +10,6 @@ namespace BreakoutGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Ensure the startup form is set to Form1
             Application.Run(new Form1());
         }
     }
