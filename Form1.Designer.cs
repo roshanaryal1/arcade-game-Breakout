@@ -1,59 +1,68 @@
-﻿namespace BreakoutGame
+﻿using System.Windows.Forms;
+
+namespace BreakoutGame
 {
     partial class Form1
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.Panel gamePanel;
-        private System.Windows.Forms.Label scoreLabel;
-        private System.Windows.Forms.Button startButton;
-        private System.Windows.Forms.Timer gameTimer;
+        private Panel gamePanel;
+        private Button startButton;
+        private Label scoreLabel;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.gamePanel = new System.Windows.Forms.Panel();
-            this.scoreLabel = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
-            this.gameTimer = new System.Windows.Forms.Timer(this.components);
-
+            this.scoreLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
 
             // gamePanel
             this.gamePanel.BackColor = System.Drawing.Color.Black;
             this.gamePanel.Location = new System.Drawing.Point(10, 10);
             this.gamePanel.Name = "gamePanel";
-            this.gamePanel.Size = new System.Drawing.Size(800, 500);
+            this.gamePanel.Size = new System.Drawing.Size(800, 600);
             this.gamePanel.TabIndex = 0;
-            this.gamePanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gamePanel_MouseMove);
-
-            // scoreLabel
-            this.scoreLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.scoreLabel.ForeColor = System.Drawing.Color.White;
-            this.scoreLabel.BackColor = System.Drawing.Color.Black;
-            this.scoreLabel.Location = new System.Drawing.Point(20, 520);
-            this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Size = new System.Drawing.Size(200, 40);
-            this.scoreLabel.Text = "Score: 0";
+            this.gamePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.GamePanel_Paint);
+            this.gamePanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GamePanel_MouseMove);
 
             // startButton
-            this.startButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.startButton.Location = new System.Drawing.Point(350, 520);
+            this.startButton.Location = new System.Drawing.Point(10, 630);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(120, 40);
-            this.startButton.Text = "Start Game";
-            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            this.startButton.Size = new System.Drawing.Size(100, 30);
+            this.startButton.TabIndex = 1;
+            this.startButton.Text = "Start";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.StartButton_Click);
 
-            // gameTimer
-            this.gameTimer.Interval = 20;
-            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
+            // scoreLabel
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.ForeColor = System.Drawing.Color.White;
+            this.scoreLabel.Location = new System.Drawing.Point(120, 630);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(46, 17);
+            this.scoreLabel.TabIndex = 2;
+            this.scoreLabel.Text = "Score: 0";
 
             // Form1
-            this.ClientSize = new System.Drawing.Size(820, 580);
-            this.Controls.Add(this.startButton);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(820, 670);
             this.Controls.Add(this.scoreLabel);
+            this.Controls.Add(this.startButton);
             this.Controls.Add(this.gamePanel);
+            this.Name = "Form1";
             this.Text = "Breakout Game";
             this.ResumeLayout(false);
+            this.PerformLayout();
         }
     }
 }
